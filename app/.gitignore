@@ -1,5 +1,4 @@
 /build
-.idea/
-.idea/gradle.xml
+/.idea
 *.iml
 .gradle/
