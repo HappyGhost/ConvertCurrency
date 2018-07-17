@@ -1,5 +1,7 @@
 package com.myapp.convertcurrency.feature.convert.presenter;
 
+import android.text.TextUtils;
+
 import com.myapp.business.convert.callback.GetCurrencyCallBack;
 import com.myapp.business.convert.info.CurrencyExchangeInfo;
 import com.myapp.business.convert.info.RateInfo;
@@ -28,7 +30,7 @@ public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
             public void onSuccess(CurrencyExchangeInfo info) {
                 if (info.getRates().size() > 0) {
                     mRateInfo = info.getRates().get(0);
-                    mView.showTargetData(mRateInfo);
+                    mView.showTargetCurrency(mRateInfo);
                 }
                 mView.showSourceData(info);
                 mView.hideProcessDialog();
@@ -44,6 +46,10 @@ public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
 
     @Override
     public void convertCurrency(String amount) {
-
+        if (mRateInfo == null || TextUtils.isEmpty(amount)) {
+            return;
+        }
+        double value = Double.valueOf(amount);
+        mView.showTargetAmountValue(value * mRateInfo.getRate());
     }
 }

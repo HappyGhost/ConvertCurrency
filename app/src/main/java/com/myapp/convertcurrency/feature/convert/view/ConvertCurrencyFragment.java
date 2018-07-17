@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.myapp.business.convert.info.CurrencyExchangeInfo;
 import com.myapp.business.convert.info.RateInfo;
 import com.myapp.convertcurrency.R;
 import com.myapp.convertcurrency.feature.convert.dialog.LoadingDialogMaterial;
+import com.myapp.convertcurrency.feature.convert.filter.MoneyValueFilter;
 import com.myapp.convertcurrency.feature.convert.presenter.ConvertCurrencyPresenter;
 
 import javax.inject.Inject;
@@ -82,6 +84,7 @@ public class ConvertCurrencyFragment extends Fragment implements ConvertCurrency
                 mPresenter.convertCurrency(s.toString());
             }
         });
+        mEdtSourceAmountInput.setFilters(new InputFilter[]{new MoneyValueFilter()});
     }
 
     @Override
@@ -112,12 +115,18 @@ public class ConvertCurrencyFragment extends Fragment implements ConvertCurrency
     }
 
     @Override
-    public void showTargetData(RateInfo rateInfo) {
+    public void showTargetCurrency(RateInfo rateInfo) {
         mTvTargetCurrency.setText(rateInfo.getCurrency());
     }
 
     @Override
     public void showErrorMessage() {
 
+    }
+
+    @Override
+    public void showTargetAmountValue(double value) {
+        String result = String.format("%.2f", value);
+        mTvTargetAmountConverted.setText(result);
     }
 }
