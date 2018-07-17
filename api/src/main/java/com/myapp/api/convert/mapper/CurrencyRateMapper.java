@@ -20,6 +20,7 @@ public class CurrencyRateMapper extends BaseInfoMapper<CurrencyExchangeInfo, Cur
             RateInfo rateInfo = new RateInfo();
             rateInfo.setCurrency(keys.get(i));
             rateInfo.setRate(values.get(i));
+            rateInfo.setDate(model.getDate());
             rates.add(rateInfo);
         }
         info.setRates(rates);

@@ -8,10 +8,13 @@ import java.util.Map;
 public class CurrencyExchangeModel {
 
     @SerializedName("base")
-    String baseCurrency;
+    private String baseCurrency;
 
     @SerializedName("rates")
-    HashMap<String, Double> rates;
+    private HashMap<String, Double> rates;
+
+    @SerializedName("date")
+    private String date;
 
     public String getBaseCurrency() {
         return baseCurrency;
@@ -27,5 +30,13 @@ public class CurrencyExchangeModel {
 
     public void setRates(HashMap<String, Double> rates) {
         this.rates = rates;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

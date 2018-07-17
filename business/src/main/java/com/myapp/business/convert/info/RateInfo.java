@@ -1,8 +1,9 @@
 package com.myapp.business.convert.info;
 
 public class RateInfo {
-    String currency;
-    Double rate;
+    private String currency;
+    private Double rate;
+    private String date;
 
     public String getCurrency() {
         return currency;
@@ -18,5 +19,13 @@ public class RateInfo {
 
     public void setRate(Double rate) {
         this.rate = rate;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

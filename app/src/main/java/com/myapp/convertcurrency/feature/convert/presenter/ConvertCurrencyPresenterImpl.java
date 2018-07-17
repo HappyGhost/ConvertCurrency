@@ -31,6 +31,7 @@ public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
                 if (info.getRates().size() > 0) {
                     mRateInfo = info.getRates().get(0);
                     mView.showTargetCurrency(mRateInfo);
+                    mView.showCurrencyNote(info, mRateInfo);
                 }
                 mView.showSourceData(info);
                 mView.hideProcessDialog();
@@ -46,10 +47,15 @@ public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
 
     @Override
     public void convertCurrency(String amount) {
-        if (mRateInfo == null || TextUtils.isEmpty(amount)) {
+        if (mRateInfo == null) {
             return;
         }
-        double value = Double.valueOf(amount);
-        mView.showTargetAmountValue(value * mRateInfo.getRate());
+
+        if (TextUtils.isEmpty(amount)) {
+            mView.clearTargetAmountField();
+        } else {
+            double value = Double.valueOf(amount);
+            mView.showTargetAmountValue(value * mRateInfo.getRate());
+        }
     }
 }

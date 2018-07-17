@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/mainColor">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/mainColor">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="@dimen/convert_currency_main_icon_width_height"
             android:layout_height="@dimen/convert_currency_main_icon_width_height"
-            android:src="@drawable/main_icon" />
+            android:src="@drawable/main_icon"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
             android:layout_marginTop="@dimen/convert_currency_main_text_margin_top"
             android:text="@string/convert_currency_main_content"
             android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:textSize="22sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,12 +42,12 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textColor="@color/mainColor"
-                tools:text="USD" />
+                tools:text="USD"/>
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/dividerLine" />
+                android:background="@color/dividerLine"/>
 
             <EditText
                 android:id="@+id/edt_source_amount_input"
@@ -57,7 +57,7 @@
                 android:inputType="numberDecimal"
                 android:paddingLeft="@dimen/convert_currency_content_amount_field_padding_left"
                 android:textColor="@color/lightGrey2"
-                tools:text="1010" />
+                tools:text="1010"/>
         </LinearLayout>
 
         <LinearLayout
@@ -73,22 +73,22 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textColor="@color/mainColor"
-                tools:text="GBP" />
+                tools:text="GBP"/>
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/dividerLine" />
+                android:background="@color/dividerLine"/>
 
             <TextView
                 android:id="@+id/tv_target_amount_converted"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:inputType="numberDecimal"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:paddingLeft="@dimen/convert_currency_content_amount_field_padding_left"
+                android:paddingStart="@dimen/convert_currency_content_amount_field_padding_left"
                 android:textColor="@color/lightGrey2"
-                tools:text="74.98" />
+                tools:text="74.98"/>
         </LinearLayout>
 
         <TextView
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/convert_currency_note_margin_top"
             android:textColor="@color/white"
-            tools:text="1 USD = 0.74983 GBP as of June 12, 2018" />
+            tools:text="1 USD = 0.74983 GBP as of June 12, 2018"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -109,13 +109,13 @@
             <ImageView
                 android:layout_width="@dimen/convert_currency_reverse_icon_width_height"
                 android:layout_height="@dimen/convert_currency_reverse_icon_width_height"
-                android:src="@drawable/reverse_icon" />
+                android:src="@drawable/reverse_icon"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/convert_currency_reverse_currencies_text"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 

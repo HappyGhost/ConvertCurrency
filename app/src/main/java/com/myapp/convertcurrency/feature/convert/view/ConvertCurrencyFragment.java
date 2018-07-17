@@ -19,6 +19,7 @@ import com.myapp.convertcurrency.R;
 import com.myapp.convertcurrency.feature.convert.dialog.LoadingDialogMaterial;
 import com.myapp.convertcurrency.feature.convert.filter.MoneyValueFilter;
 import com.myapp.convertcurrency.feature.convert.presenter.ConvertCurrencyPresenter;
+import com.myapp.convertcurrency.util.DateUtil;
 
 import javax.inject.Inject;
 
@@ -41,7 +42,7 @@ public class ConvertCurrencyFragment extends Fragment implements ConvertCurrency
     @BindView(R.id.tv_target_amount_converted)
     TextView mTvTargetAmountConverted;
     @BindView(R.id.tv_note)
-    TextView tvNote;
+    TextView mTvNote;
 
     Unbinder unbinder;
     LoadingDialogMaterial mLoadingDialogMaterial;
@@ -128,5 +129,20 @@ public class ConvertCurrencyFragment extends Fragment implements ConvertCurrency
     public void showTargetAmountValue(double value) {
         String result = String.format("%.2f", value);
         mTvTargetAmountConverted.setText(result);
+    }
+
+    @Override
+    public void clearTargetAmountField() {
+        mTvTargetAmountConverted.setText("");
+    }
+
+    @Override
+    public void showCurrencyNote(CurrencyExchangeInfo info, RateInfo rateInfo) {
+        String note = getString(R.string.convert_currency_note,
+                info.getBaseCurrency(),
+                rateInfo.getRate(),
+                rateInfo.getCurrency(),
+                DateUtil.convertDateFormat(rateInfo.getDate(), DateUtil.YYYY_MM_DD_FORMAT, DateUtil.MM_DD_YYYY_FORMAT));
+        mTvNote.setText(note);
     }
 }

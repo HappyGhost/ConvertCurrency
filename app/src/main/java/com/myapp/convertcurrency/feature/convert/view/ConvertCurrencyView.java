@@ -15,4 +15,8 @@ public interface ConvertCurrencyView {
     void showErrorMessage();
 
     void showTargetAmountValue(double value);
+
+    void clearTargetAmountField();
+
+    void showCurrencyNote(CurrencyExchangeInfo info, RateInfo rateInfo);
 }
