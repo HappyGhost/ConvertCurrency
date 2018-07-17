@@ -5,4 +5,6 @@ public interface ConvertCurrencyPresenter {
     void loadCurrencyRate();
 
     void convertCurrency(String amount);
+
+    void onCurrencyItemSelected(int position);
 }

@@ -5,11 +5,16 @@
     <dimen name="convert_currency_content_margin_left">16dp</dimen>
     <dimen name="convert_currency_content_margin_right">16dp</dimen>
     <dimen name="convert_currency_content_field_height">40dp</dimen>
-    <dimen name="convert_currency_content_currency_field_width">62dp</dimen>
+    <dimen name="convert_currency_content_currency_field_width">82dp</dimen>
+    <dimen name="convert_currency_content_currency_field_margin_right">30dp</dimen>
     <dimen name="convert_currency_content_source_field_margin_top">12dp</dimen>
     <dimen name="convert_currency_content_amount_field_padding_left">6dp</dimen>
     <dimen name="convert_currency_content_target_field_margin_top">16dp</dimen>
     <dimen name="convert_currency_note_margin_top">9dp</dimen>
     <dimen name="convert_currency_reverse_icon_width_height">18dp</dimen>
     <dimen name="convert_currency_reverse_currency_margin_top">16dp</dimen>
+    <dimen name="convert_currency_target_currency_spinner_width">112dp</dimen>
+
+    <dimen name="item_currency_height">40dp</dimen>
+    <dimen name="item_currency_width">82dp</dimen>
 </resources>

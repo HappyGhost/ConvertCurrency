@@ -40,6 +40,7 @@
                 android:id="@+id/tv_source_currency"
                 android:layout_width="@dimen/convert_currency_content_currency_field_width"
                 android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/convert_currency_content_currency_field_margin_right"
                 android:gravity="center"
                 android:textColor="@color/mainColor"
                 tools:text="USD"/>
@@ -67,11 +68,12 @@
             android:background="@drawable/bg_border_grey"
             android:orientation="horizontal">
 
-            <TextView
+            <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/tv_target_currency"
-                android:layout_width="@dimen/convert_currency_content_currency_field_width"
+                android:layout_width="@dimen/convert_currency_target_currency_spinner_width"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:spinnerMode="dialog"
                 android:textColor="@color/mainColor"
                 tools:text="GBP"/>
 
@@ -83,7 +85,7 @@
             <TextView
                 android:id="@+id/tv_target_amount_converted"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/convert_currency_content_amount_field_padding_left"
                 android:paddingStart="@dimen/convert_currency_content_amount_field_padding_left"

@@ -10,8 +10,6 @@ public interface ConvertCurrencyView {
 
     void showSourceData(CurrencyExchangeInfo info);
 
-    void showTargetCurrency(RateInfo rateInfo);
-
     void showErrorMessage();
 
     void showTargetAmountValue(double value);

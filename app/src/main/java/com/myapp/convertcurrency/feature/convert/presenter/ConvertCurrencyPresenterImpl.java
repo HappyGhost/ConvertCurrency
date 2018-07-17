@@ -15,6 +15,7 @@ public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
     private ConvertCurrencyView mView;
     private GetCurrencyRateUseCase mGetCurrencyRateUseCase;
     private RateInfo mRateInfo;
+    private CurrencyExchangeInfo mCurrencyExchangeInfo;
 
     @Inject
     public ConvertCurrencyPresenterImpl(ConvertCurrencyView view, GetCurrencyRateUseCase getCurrencyRateUseCase) {
@@ -28,11 +29,7 @@ public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
         mGetCurrencyRateUseCase.buildUseCase().executeByCallBack(new GetCurrencyCallBack() {
             @Override
             public void onSuccess(CurrencyExchangeInfo info) {
-                if (info.getRates().size() > 0) {
-                    mRateInfo = info.getRates().get(0);
-                    mView.showTargetCurrency(mRateInfo);
-                    mView.showCurrencyNote(info, mRateInfo);
-                }
+                mCurrencyExchangeInfo = info;
                 mView.showSourceData(info);
                 mView.hideProcessDialog();
             }
@@ -57,5 +54,11 @@ public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
             double value = Double.valueOf(amount);
             mView.showTargetAmountValue(value * mRateInfo.getRate());
         }
+    }
+
+    @Override
+    public void onCurrencyItemSelected(int position) {
+        mRateInfo = mCurrencyExchangeInfo.getRates().get(position);
+        mView.showCurrencyNote(mCurrencyExchangeInfo, mRateInfo);
     }
 }
