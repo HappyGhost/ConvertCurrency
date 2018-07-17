@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="mainColor">#556c79</color>
+    <color name="white">#ffffff</color>
+    <color name="lightGrey">#E8E8E8</color>
+    <color name="lightGrey2">#aaaaaa</color>
+    <color name="dividerLine">#fafafa</color>
+    <color name="dialog_bg_color">#B3000000</color>
 </resources>

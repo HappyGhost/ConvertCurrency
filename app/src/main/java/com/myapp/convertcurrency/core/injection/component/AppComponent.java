@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import retrofit2.Retrofit;
 
 @Singleton
 @Component(modules = {RepositoryModule.class,
@@ -20,6 +21,8 @@ public interface AppComponent {
 
         AppComponent build();
     }
+
+    Retrofit retrofit();
 
     void inject(CoreApplication app);
 }

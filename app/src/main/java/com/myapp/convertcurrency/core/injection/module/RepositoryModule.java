@@ -2,7 +2,6 @@ package com.myapp.convertcurrency.core.injection.module;
 
 import com.myapp.convertcurrency.core.retrofit.converter.JsonPureConverterFactory;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -18,7 +17,6 @@ public class RepositoryModule {
 
     @Provides
     @Singleton
-    @Named("API_OK_HTTP_CLIENT")
     OkHttpClient provideOkHttpClient2(Interceptor interceptor) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.cache(null);
@@ -29,10 +27,10 @@ public class RepositoryModule {
 
     @Provides
     @Singleton
-    Retrofit provideApiAdapter(String endpoint, OkHttpClient okHttpClient) {
+    Retrofit provideApiAdapter(OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(endpoint)
+                .baseUrl("http://data.fixer.io")
                 .addConverterFactory(JsonPureConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
