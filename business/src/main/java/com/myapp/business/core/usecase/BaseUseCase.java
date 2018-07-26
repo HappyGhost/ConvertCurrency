@@ -1,6 +1,7 @@
 package com.myapp.business.core.usecase;
 
 import com.myapp.business.core.callback.ICallBack;
+import com.myapp.business.core.exception.BaseException;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -38,8 +39,25 @@ public abstract class BaseUseCase<T extends ICallBack<K>, K> implements IUseCase
     }
 
     protected void onError(T callBack, Throwable e) {
-        callBack.onError(e);
+        if (e instanceof BaseException) {
+            BaseException baseException = (BaseException) e;
+            if (!handleErrorException(baseException, callBack)) {
+                handleGenericError(baseException, callBack);
+            }
+        } else {
+            callBack.onError(e);
+        }
     }
+
+    private void handleGenericError(BaseException e, T callBack) {
+        if (e.getExceptionType() == BaseException.ExceptionType.NETWORK_ERROR) {
+            callBack.onNetworkError();
+        } else {
+            callBack.onGenericError(e);
+        }
+    }
+
+    protected abstract boolean handleErrorException(BaseException e, T callBack);
 
     protected void onSuccess(T callBack, K info) {
         callBack.onSuccess(info);

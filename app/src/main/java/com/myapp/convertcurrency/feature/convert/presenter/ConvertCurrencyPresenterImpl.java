@@ -6,6 +6,7 @@ import com.myapp.business.convert.callback.GetCurrencyCallBack;
 import com.myapp.business.convert.info.CurrencyExchangeInfo;
 import com.myapp.business.convert.info.RateInfo;
 import com.myapp.business.convert.usecase.IGetCurrencyRateUseCase;
+import com.myapp.business.core.exception.BaseException;
 import com.myapp.convertcurrency.feature.convert.view.ConvertCurrencyView;
 
 import javax.inject.Inject;
@@ -38,6 +39,16 @@ public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
             public void onError(Throwable throwable) {
                 mView.hideProcessDialog();
                 mView.showErrorMessage();
+            }
+
+            @Override
+            public void onNetworkError() {
+
+            }
+
+            @Override
+            public void onGenericError(BaseException e) {
+
             }
         });
     }
