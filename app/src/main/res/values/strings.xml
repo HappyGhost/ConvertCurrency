@@ -4,4 +4,6 @@
     <string name="convert_currency_main_content">Currency Converter</string>
     <string name="convert_currency_reverse_currencies_text">Reverse Currencies</string>
     <string name="convert_currency_note">1 %1$s = %2$f %3$s as of %4$s</string>
+    <string name="network_error">There is something wrong with your network</string>
+    <string name="generic_error">Something went wrong from server side</string>
 </resources>

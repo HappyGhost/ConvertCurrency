@@ -38,17 +38,19 @@ public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
             @Override
             public void onError(Throwable throwable) {
                 mView.hideProcessDialog();
-                mView.showErrorMessage();
+                mView.showUnknownError();
             }
 
             @Override
             public void onNetworkError() {
-
+                mView.hideProcessDialog();
+                mView.showNetworkError();
             }
 
             @Override
             public void onGenericError(BaseException e) {
-
+                mView.hideProcessDialog();
+                mView.showGenericError();
             }
         });
     }

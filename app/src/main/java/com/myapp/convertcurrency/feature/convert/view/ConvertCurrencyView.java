@@ -10,11 +10,15 @@ public interface ConvertCurrencyView {
 
     void showSourceData(CurrencyExchangeInfo info);
 
-    void showErrorMessage();
+    void showUnknownError();
 
     void showTargetAmountValue(double value);
 
     void clearTargetAmountField();
 
     void showCurrencyNote(CurrencyExchangeInfo info, RateInfo rateInfo);
+
+    void showNetworkError();
+
+    void showGenericError();
 }

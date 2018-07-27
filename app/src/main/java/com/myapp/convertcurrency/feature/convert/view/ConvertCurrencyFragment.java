@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -135,8 +136,7 @@ public class ConvertCurrencyFragment extends Fragment implements ConvertCurrency
     }
 
     @Override
-    public void showErrorMessage() {
-
+    public void showUnknownError() {
     }
 
     @Override
@@ -158,5 +158,18 @@ public class ConvertCurrencyFragment extends Fragment implements ConvertCurrency
                 rateInfo.getCurrency(),
                 DateUtil.convertDateFormat(rateInfo.getDate(), DateUtil.YYYY_MM_DD_FORMAT, DateUtil.MM_DD_YYYY_FORMAT));
         mTvNote.setText(note);
+        mTvNote.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
+    }
+
+    @Override
+    public void showNetworkError() {
+        mTvNote.setTextColor(ContextCompat.getColor(requireActivity(), R.color.red));
+        mTvNote.setText(R.string.network_error);
+    }
+
+    @Override
+    public void showGenericError() {
+        mTvNote.setTextColor(ContextCompat.getColor(requireActivity(), R.color.red));
+        mTvNote.setText(R.string.generic_error);
     }
 }

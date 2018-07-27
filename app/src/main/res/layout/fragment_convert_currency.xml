@@ -1,126 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/mainColor">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainColor"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingEnd="@dimen/convert_currency_content_margin_right"
+    android:paddingLeft="@dimen/convert_currency_content_margin_left"
+    android:paddingRight="@dimen/convert_currency_content_margin_right"
+    android:paddingStart="@dimen/convert_currency_content_margin_left">
+
+    <ImageView
+        android:layout_width="@dimen/convert_currency_main_icon_width_height"
+        android:layout_height="@dimen/convert_currency_main_icon_width_height"
+        android:src="@drawable/main_icon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/convert_currency_main_text_margin_top"
+        android:text="@string/convert_currency_main_content"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="@dimen/convert_currency_content_field_height"
+        android:layout_marginTop="@dimen/convert_currency_content_source_field_margin_top"
+        android:background="@drawable/bg_border_grey"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_source_currency"
+            android:layout_width="@dimen/convert_currency_content_currency_field_width"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/convert_currency_content_currency_field_margin_right"
+            android:layout_marginRight="@dimen/convert_currency_content_currency_field_margin_right"
+            android:gravity="center"
+            android:textColor="@color/mainColor"
+            tools:text="USD" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/dividerLine" />
+
+        <EditText
+            android:id="@+id/edt_source_amount_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:inputType="numberDecimal"
+            android:paddingLeft="@dimen/convert_currency_content_amount_field_padding_left"
+            android:paddingStart="@dimen/convert_currency_content_amount_field_padding_left"
+            android:textColor="@color/lightGrey2"
+            tools:ignore="RtlSymmetry"
+            tools:text="1010" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/convert_currency_content_field_height"
+        android:layout_marginTop="@dimen/convert_currency_content_target_field_margin_top"
+        android:background="@drawable/bg_border_grey"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/tv_target_currency"
+            android:layout_width="@dimen/convert_currency_target_currency_spinner_width"
+            android:layout_height="match_parent"
+            android:spinnerMode="dialog"
+            android:textColor="@color/mainColor" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/dividerLine" />
+
+        <TextView
+            android:id="@+id/tv_target_amount_converted"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/convert_currency_content_amount_field_padding_left"
+            android:paddingStart="@dimen/convert_currency_content_amount_field_padding_left"
+            android:textColor="@color/lightGrey2"
+            tools:ignore="RtlSymmetry"
+            tools:text="74.98" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_note"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/convert_currency_content_margin_right"
-        android:layout_marginLeft="@dimen/convert_currency_content_margin_left"
-        android:layout_marginRight="@dimen/convert_currency_content_margin_right"
-        android:layout_marginStart="@dimen/convert_currency_content_margin_left"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_marginTop="@dimen/convert_currency_note_margin_top"
+        android:textColor="@color/white"
+        tools:text="1 USD = 0.74983 GBP as of June 12, 2018" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/convert_currency_reverse_currency_margin_top"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="@dimen/convert_currency_main_icon_width_height"
-            android:layout_height="@dimen/convert_currency_main_icon_width_height"
-            android:src="@drawable/main_icon"/>
+            android:layout_width="@dimen/convert_currency_reverse_icon_width_height"
+            android:layout_height="@dimen/convert_currency_reverse_icon_width_height"
+            android:src="@drawable/reverse_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/convert_currency_main_text_margin_top"
-            android:text="@string/convert_currency_main_content"
-            android:textColor="@color/white"
-            android:textSize="22sp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/convert_currency_content_field_height"
-            android:layout_marginTop="@dimen/convert_currency_content_source_field_margin_top"
-            android:background="@drawable/bg_border_grey"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_source_currency"
-                android:layout_width="@dimen/convert_currency_content_currency_field_width"
-                android:layout_height="match_parent"
-                android:layout_marginRight="@dimen/convert_currency_content_currency_field_margin_right"
-                android:gravity="center"
-                android:textColor="@color/mainColor"
-                tools:text="USD"/>
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/dividerLine"/>
-
-            <EditText
-                android:id="@+id/edt_source_amount_input"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:inputType="numberDecimal"
-                android:paddingLeft="@dimen/convert_currency_content_amount_field_padding_left"
-                android:textColor="@color/lightGrey2"
-                tools:text="1010"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/convert_currency_content_field_height"
-            android:layout_marginTop="@dimen/convert_currency_content_target_field_margin_top"
-            android:background="@drawable/bg_border_grey"
-            android:orientation="horizontal">
-
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/tv_target_currency"
-                android:layout_width="@dimen/convert_currency_target_currency_spinner_width"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:spinnerMode="dialog"
-                android:textColor="@color/mainColor"
-                tools:text="GBP"/>
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/dividerLine"/>
-
-            <TextView
-                android:id="@+id/tv_target_amount_converted"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/convert_currency_content_amount_field_padding_left"
-                android:paddingStart="@dimen/convert_currency_content_amount_field_padding_left"
-                android:textColor="@color/lightGrey2"
-                tools:text="74.98"/>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_note"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/convert_currency_note_margin_top"
-            android:textColor="@color/white"
-            tools:text="1 USD = 0.74983 GBP as of June 12, 2018"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/convert_currency_reverse_currency_margin_top"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="@dimen/convert_currency_reverse_icon_width_height"
-                android:layout_height="@dimen/convert_currency_reverse_icon_width_height"
-                android:src="@drawable/reverse_icon"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/convert_currency_reverse_currencies_text"
-                android:textColor="@color/white"/>
-
-        </LinearLayout>
+            android:text="@string/convert_currency_reverse_currencies_text"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
