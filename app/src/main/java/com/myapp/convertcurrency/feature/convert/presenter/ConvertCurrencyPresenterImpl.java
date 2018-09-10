@@ -5,7 +5,8 @@ import android.text.TextUtils;
 import com.myapp.business.convert.callback.GetCurrencyCallBack;
 import com.myapp.business.convert.info.CurrencyExchangeInfo;
 import com.myapp.business.convert.info.RateInfo;
-import com.myapp.business.convert.usecase.GetCurrencyRateUseCase;
+import com.myapp.business.convert.usecase.IGetCurrencyRateUseCase;
+import com.myapp.business.core.exception.BaseException;
 import com.myapp.convertcurrency.feature.convert.view.ConvertCurrencyView;
 
 import javax.inject.Inject;
@@ -13,12 +14,12 @@ import javax.inject.Inject;
 public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
 
     private ConvertCurrencyView mView;
-    private GetCurrencyRateUseCase mGetCurrencyRateUseCase;
+    private IGetCurrencyRateUseCase mGetCurrencyRateUseCase;
     private RateInfo mRateInfo;
     private CurrencyExchangeInfo mCurrencyExchangeInfo;
 
     @Inject
-    public ConvertCurrencyPresenterImpl(ConvertCurrencyView view, GetCurrencyRateUseCase getCurrencyRateUseCase) {
+    public ConvertCurrencyPresenterImpl(ConvertCurrencyView view, IGetCurrencyRateUseCase getCurrencyRateUseCase) {
         mView = view;
         mGetCurrencyRateUseCase = getCurrencyRateUseCase;
     }
@@ -38,6 +39,16 @@ public class ConvertCurrencyPresenterImpl implements ConvertCurrencyPresenter {
             public void onError(Throwable throwable) {
                 mView.hideProcessDialog();
                 mView.showErrorMessage();
+            }
+
+            @Override
+            public void onNetworkError() {
+
+            }
+
+            @Override
+            public void onGenericError(BaseException e) {
+
             }
         });
     }

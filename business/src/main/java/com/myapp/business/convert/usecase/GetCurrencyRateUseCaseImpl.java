@@ -3,53 +3,33 @@ package com.myapp.business.convert.usecase;
 import com.myapp.business.convert.callback.GetCurrencyCallBack;
 import com.myapp.business.convert.info.CurrencyExchangeInfo;
 import com.myapp.business.convert.repository.ConvertCurrencyRepository;
+import com.myapp.business.core.exception.BaseException;
+import com.myapp.business.core.usecase.BaseUseCase;
 
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
-public class GetCurrencyRateUseCaseImpl implements GetCurrencyRateUseCase {
+public class GetCurrencyRateUseCaseImpl extends BaseUseCase<GetCurrencyCallBack, CurrencyExchangeInfo> implements IGetCurrencyRateUseCase {
 
     ConvertCurrencyRepository mRepository;
     Observable<CurrencyExchangeInfo> mObservable;
-    Disposable mDisposable;
 
     public GetCurrencyRateUseCaseImpl(ConvertCurrencyRepository repository) {
         mRepository = repository;
     }
 
     @Override
-    public GetCurrencyRateUseCase buildUseCase() {
+    public IGetCurrencyRateUseCase buildUseCase() {
         mObservable = mRepository.getCurrencyExchange();
         return this;
     }
 
     @Override
-    public void executeByCallBack(final GetCurrencyCallBack callBack) {
-        mDisposable = mObservable
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Consumer<CurrencyExchangeInfo>() {
-                    @Override
-                    public void accept(CurrencyExchangeInfo currencyExchangeInfo) {
-                        callBack.onSuccess(currencyExchangeInfo);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) {
-                        callBack.onError(throwable);
-                    }
-                });
+    protected boolean handleErrorException(BaseException e, GetCurrencyCallBack callBack) {
+        return false;
     }
 
     @Override
-    public void destroy() {
-        if (mDisposable != null) {
-            mDisposable.dispose();
-        }
+    protected Observable<CurrencyExchangeInfo> getObservable() {
+        return mObservable;
     }
-
-
 }

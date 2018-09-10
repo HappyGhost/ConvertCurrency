@@ -3,8 +3,8 @@ package com.myapp.convertcurrency.feature.convert.module;
 import com.myapp.api.convert.repository.ConvertCurrencyRepositoryImpl;
 import com.myapp.api.convert.service.ConvertCurrencyService;
 import com.myapp.business.convert.repository.ConvertCurrencyRepository;
-import com.myapp.business.convert.usecase.GetCurrencyRateUseCase;
 import com.myapp.business.convert.usecase.GetCurrencyRateUseCaseImpl;
+import com.myapp.business.convert.usecase.IGetCurrencyRateUseCase;
 import com.myapp.convertcurrency.core.injection.scope.PerView;
 import com.myapp.convertcurrency.feature.convert.presenter.ConvertCurrencyPresenter;
 import com.myapp.convertcurrency.feature.convert.presenter.ConvertCurrencyPresenterImpl;
@@ -32,7 +32,7 @@ public class ConvertCurrencyModule {
 
     @Provides
     @PerView
-    GetCurrencyRateUseCase provideGetCurrencyRateUseCase(ConvertCurrencyRepository repository) {
+    IGetCurrencyRateUseCase provideGetCurrencyRateUseCase(ConvertCurrencyRepository repository) {
         return new GetCurrencyRateUseCaseImpl(repository);
     }
 
